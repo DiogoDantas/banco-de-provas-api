@@ -15,7 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from api import views
+
+# TODO mudar para arquivo de config
+# API version
+VERSION = 'api/v1'
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    # documentation
+	url(r'^$', views.index),
+
+    # entry points
+	url(r'^'+VERSION+'/provas', views.get_provas), #Listagem de todas as provas
+    
+    # config default
+    url(r'^admin/', admin.site.urls), #Admin do postgres
 ]
