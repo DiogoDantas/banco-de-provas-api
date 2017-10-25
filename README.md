@@ -31,3 +31,11 @@ $ docker-compose build
 `
 $ docker-compose up
 `
+
+
+
+
+
+##### Referências
+
+[Rest Framework tutorial por @ktruong008](https://medium.com/@ktruong008/building-an-api-with-django-rest-framework-and-class-based-views-75b369b30396)
