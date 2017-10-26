@@ -1,20 +1,41 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework.reverse import reverse
+from rest_framework import viewsets
+from api.serializers import ProvasSerializer, CursosSerializer, DisciplinaSerializer
+from .models import Prova, Curso, Disciplina
  
 # Create your views here.
 
 @api_view(['GET'])
 def index(request, format=None):
     return Response({
-       'users': 'Diogo',
-       'todos': 'AlgumaCoisa',
+       'api': 'BancoDeProvasUFPB',
+       'version': '0.0.1',
     })
 
-@api_view(['GET'])
-def get_provas(request):
-	provas = Provas.objects.all()
-	serializer = ProvasSerializer(provas, many=True)
-	return Response(serializer.data)
-	
+
+class ProvasViewSet(viewsets.ModelViewSet):
+	queryset = Prova.objects.all()
+	serializer_class = ProvasSerializer
+
+	def incrementar_classificacao_prova(self, request, pk):
+		print(pk)
+		queryset = Prova.objects.all()
+		prova = get_object_or_404(queryset, pk=pk)
+		prova.classificacao += 1
+		prova.save()
+		return Response({
+       		'status': 'classificação atualizada'
+    	})
+
+
+
+
+class CursosViewSet(viewsets.ModelViewSet):
+	queryset = Curso.objects.all()
+	serializer_class = CursosSerializer
+
+class DisciplinaViewSet(viewsets.ModelViewSet):
+	queryset = Disciplina.objects.all()
+	serializer_class = DisciplinaSerializer

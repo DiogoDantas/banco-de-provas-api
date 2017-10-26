@@ -13,21 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
-from api import views
 
-# TODO mudar para arquivo de config
-# API version
-VERSION = 'api/v1'
 
 urlpatterns = [
-    # documentation
-	url(r'^$', views.index),
+    url(r'', include('api.urls')), # Rotas da API
 
-    # entry points
-	url(r'^'+VERSION+'/provas', views.get_provas), #Listagem de todas as provas
-    
     # config default
     url(r'^admin/', admin.site.urls), #Admin do postgres
 ]
