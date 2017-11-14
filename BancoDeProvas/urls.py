@@ -18,7 +18,7 @@ from django.contrib import admin
 
 
 urlpatterns = [
-    url(r'', include('api.urls')), # Rotas da API
+    url(r'^api/v1/', include('api.urls')), # Rotas da API
 
     # config default
     url(r'^admin/', admin.site.urls), #Admin do postgres
