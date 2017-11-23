@@ -9,6 +9,7 @@ router = routers.SimpleRouter()
 router.register(r'provas', views.ProvasViewSet)
 router.register(r'cursos', views.CursosViewSet)
 router.register(r'disciplinas', views.DisciplinaViewSet)
+router.register(r'periodos', views.PeriodosViewSet)
 
 urlpatterns = [
    url(r'^$', views.index, name='index'),
