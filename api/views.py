@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 from api.serializers import ProvasSerializer, CursosSerializer, DisciplinaSerializer, PeriodoSerializer
 from .models import Prova, Curso, Disciplina, Periodo
+from django_filters.rest_framework import DjangoFilterBackend
  
 # Create your views here.
 
@@ -28,9 +29,6 @@ class ProvasViewSet(viewsets.ModelViewSet):
 		return Response({
        		'status': 'classificação atualizada'
     	})
-
-
-
 
 class CursosViewSet(viewsets.ModelViewSet):
 	queryset = Curso.objects.all()

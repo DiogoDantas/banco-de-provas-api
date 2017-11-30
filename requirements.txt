@@ -3,3 +3,4 @@ psycopg2
 djangorestframework
 pillow
 django-cors-headers
+django-filter
