@@ -51,15 +51,13 @@ class ProvasViewSet(viewsets.ModelViewSet):
 			provas = Prova.objects.all()
 
 			if(curso is not None):
-				curso = Curso.objects.filter(id=curso)
-				disciplinas = Disciplina.objects.filter(curso=curso)
-				provas = provas.filter(disciplina=disciplinas)
+				#curso = Curso.objects.filter(id=curso)
+				#disciplinas = Disciplina.objects.filter(curso=curso)
+				provas = provas.filter(disciplina__curso__id=curso)
 			if(disciplina is not None):
-				disciplina = Disciplina.objects.filter(id=disciplina)
-				provas = provas.filter(disciplina=disciplina)
+				provas = provas.filter(disciplina__id=disciplina)
 			if(periodo is not None):	
-				periodo = Periodo.objects.filter(id=periodo)
-				provas = provas.filter(periodo=periodo)
+				provas = provas.filter(periodo__id=periodo)
 			if(classificacao is not None):	
 				provas = provas.filter(classificacao=classificacao)	
 					
