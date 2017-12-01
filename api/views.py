@@ -59,7 +59,7 @@ class ProvasViewSet(viewsets.ModelViewSet):
 			if(periodo is not None):	
 				provas = provas.filter(periodo__id=periodo)
 			if(classificacao is not None):	
-				provas = provas.filter(classificacao=classificacao)	
+				provas = provas.filter(classificacao__gte=classificacao)	
 					
 			return provas
 
