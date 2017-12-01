@@ -5,7 +5,7 @@ from rest_framework import routers
 
 VERSION = 'api/v1/'
 
-router = routers.SimpleRouter()
+router = routers.SimpleRouter(trailing_slash='optional')
 router.register(r'provas', views.ProvasViewSet)
 router.register(r'cursos', views.CursosViewSet)
 router.register(r'disciplinas', views.DisciplinaViewSet)
